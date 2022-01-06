@@ -15,7 +15,8 @@ const Button = (props) => (
 
   const Statistics = (props) => {
     const { good, neutral, bad, average, totalCount} = props;
-    return (<table><thead>
+    return (<table>
+    <thead>
       <tr>
         <th>Statistic</th>
         <th>Value</th>

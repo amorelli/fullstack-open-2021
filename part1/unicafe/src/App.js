@@ -1,20 +1,36 @@
 import React, { useState } from 'react'
+import './App.css';
 
 const Button = (props) => (
     <button onClick={props.handleClick}>
       {props.text}
     </button>
-  )
+  );
+
+  const StatisticLine = props => ( 
+  <tr>
+		<td>{props.text}</td>
+		<td>{props.statistic}</td>
+	</tr> );
 
   const Statistics = (props) => {
     const { good, neutral, bad, average, totalCount} = props;
-    return <div>
-      <p>Good: {good}</p>
-      <p>Neutral: {neutral}</p>
-      <p>Bad: {bad}</p>
-      <p>Average: {average}</p>
-      <p>Positive: {good/totalCount}</p>
-      </div>
+    return (<table><thead>
+      <tr>
+        <th>Statistic</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+        <StatisticLine text="Good" statistic={good} />
+        <StatisticLine text="Neutral" statistic={neutral} />
+        <StatisticLine text="Bad" statistic={bad} />
+        <StatisticLine text="Average" statistic={average} />
+        <StatisticLine text="Positive" statistic={good/totalCount} />
+      </tbody>
+    </table>)
+      
+      
   }
 
 const App = () => {

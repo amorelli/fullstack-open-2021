@@ -21,8 +21,11 @@ const App = () => {
     setAnecdoteData(anecdoteData.map((anecdote, index) => (index === selected ? {text: anecdote.text, score: anecdote.score += 1} : anecdote )));
   }
 
+  const getHighScoreAnecdote = () => anecdoteData.reduce((max, obj) => obj.score > max.score? obj : max)
+
   return (
     <div>
+      <h1>Anecdote of the day</h1>
       <p>{anecdoteData[selected].text}</p>
       <p>Score: {anecdoteData[selected].score}</p>
       <button onClick={handleVote}>
@@ -31,6 +34,9 @@ const App = () => {
       <button onClick={handleNextAnecdote}>
         Next anecdote
       </button>
+      <h1>Anecdote with the most votes</h1>
+      <p>{getHighScoreAnecdote().text}</p>
+      <p>Score: {getHighScoreAnecdote().score}</p>
     </div>
   )
 }
